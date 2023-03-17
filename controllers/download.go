@@ -19,8 +19,6 @@ func DownloadFromS3Bucket(c *gin.Context) {
 	fmt.Println(bucket)
 	item := c.Param("item")
 
-	/
-
 	file, err := os.Create(item)
 	fmt.Println(file, err)
 	if err != nil {
@@ -40,7 +38,7 @@ func DownloadFromS3Bucket(c *gin.Context) {
 			Bucket: aws.String(bucket),
 			Key:    aws.String(item),
 		})
-	
+
 	if err != nil {
 		fmt.Println(err)
 	}
