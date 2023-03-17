@@ -39,7 +39,7 @@ func ConnectAws() *session.Session {
 			Credentials: credentials.NewStaticCredentials(
 				AccessKeyID,
 				SecretAccessKey,
-				"", // a token will be created when the session it's used.
+				"",
 			),
 		})
 	if err != nil {

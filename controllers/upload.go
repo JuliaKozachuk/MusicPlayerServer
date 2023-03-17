@@ -25,11 +25,10 @@ func UploadImage(c *gin.Context) {
 	MyBucket := connectaws.GetEnvWithKey("BUCKET_NAME")
 	file, header, err := c.Request.FormFile("photo")
 	filename := header.Filename
-	//fmt.Println(sess, uploader, MyBucket, file, header, err, filename)
-	//upload to the s3 bucket
+
 	up, err := uploader.Upload(&s3manager.UploadInput{
 		Bucket: aws.String(MyBucket),
-		//ACL:    aws.String("public-read"),
+
 		Key:  aws.String(filename),
 		Body: file,
 	})

@@ -14,12 +14,8 @@ func SetupRouter(sess *session.Session) {
 		c.Set("sess", sess)
 		c.Next()
 	})
-	//router.LoadHTMLGlob("templates/*")
 
-	// router.Get("/upload", Form)
 	router.POST("/upload", controllers.UploadImage)
-
-	// router.GET("/image", controllers.DisplayImage)
 
 	_ = router.Run(":9888")
 }
