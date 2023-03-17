@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  
+  postgres:
+    image: postgres:14.1
+    environment:
+      POSTGRES_DB: 'player'
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    ports:
+      - "5432:5432"
+    volumes:
+      - 'pgdata:/var/lib/postgresql/data/'
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+
+    ports:
+      - "${PGADMIN_PORT:-9090}:80"
+    restart: unless-stopped
+
+
+
+
+
+volumes:
+  cache:
+    driver: local
+  pgdata:
+  pgadmin:
