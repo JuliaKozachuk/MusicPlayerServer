@@ -13,7 +13,10 @@ func ConnectDB(postgres string) {
 	if err != nil {
 		panic("Не удалось подключиться к базе данных")
 	}
-	db.AutoMigrate(&Track{})
+	db.AutoMigrate(&User{})
+	db.AutoMigrate(&MusicList{})
+	db.AutoMigrate(&MusicListSongs{})
+	db.AutoMigrate(&Songs{})
 
 	DB = db
 
