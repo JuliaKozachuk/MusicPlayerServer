@@ -16,6 +16,10 @@ func SetupRouter(sess *session.Session) {
 	})
 
 	router.POST("/upload", controllers.UploadImage)
+	router.POST("/add", controllers.CreateUsers)
+	router.POST("/addlist", controllers.CreateMusicList)
+	router.POST("/addlistid", controllers.CreateMusicListSong)
+	router.POST("/addsong", controllers.CreateSong)
 
 	_ = router.Run(":9888")
 }

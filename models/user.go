@@ -15,8 +15,9 @@ type Model struct {
 
 type User struct {
 	Model
-	ID       uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()",gorm:"primary_key"`
-	Username string    `gorm: not null; unique" json:"username"`
+	ID         uuid.UUID   `gorm:"type:uuid;default:gen_random_uuid()"`
+	Username   string      `gorm:"not null;unique" json:"username"`
+	MusicLists []MusicList `gorm:"foreignKey:UserID;references:ID"`
 }
 
 func (u *User) SaveUser() (*User, error) {
@@ -27,4 +28,5 @@ func (u *User) SaveUser() (*User, error) {
 		return &User{}, err
 	}
 	return u, nil
+
 }

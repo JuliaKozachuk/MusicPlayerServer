@@ -38,6 +38,10 @@ func main() {
 	router.POST("/upload", controllers.UploadImage)
 
 	router.GET("/download/:item", controllers.DownloadFromS3Bucket)
+	router.POST("add", controllers.CreateUsers)
+	router.POST("/addlist", controllers.CreateMusicList)
+	router.POST("/addlistid", controllers.CreateMusicListSong)
+	router.POST("/addsong", controllers.CreateSong)
 
 	_ = router.Run(":9888")
 
